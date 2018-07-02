@@ -53,7 +53,7 @@
         </block>
 
 
-        <move element="helloworld" destination="div.sidebar.additional"  before="-"/>
+        <!-- <move element="helloworld" destination="div.sidebar.additional"  before="-"/> -->
        
 
         <referenceContainer name="phone" htmlClass="header.bottom" htmlTag="div"> </referenceContainer>

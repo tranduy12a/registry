@@ -15,5 +15,12 @@
         "files": [
             "registration.php"
         ]
+    },
+
+    "repositories": [
+    {
+     "type": "vcs",
+     "url": "git@github.com:magento-hackathon/magento2-plugin-visualization.git"
     }
+],
 }
