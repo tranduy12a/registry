@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+?>
+<div class="absolute-footer" style="text-align:center;">
+    <p>
+        [DebugTraceModule_DTrace]: <?php echo $block->getNameInLayout() ?>
+        <?php echo "hhhhhhhhhhhhh"; ?>
+    </p>
+    <p>
+        <?php if (!$customer->isEmpty()) echo 'Customer is logged in'; ?>
+    </p>
+    <?php /* @escapeNotVerified */
+    echo $block->getMiscellaneousHtml(); ?>
+    <?php 
+   var_dump($customer->getData());
+    // echo "fffffffffffffff";
+    // 	echo "<pre>";
+    // 	print_r($customer->getData());
+
+    ?>
+</div>

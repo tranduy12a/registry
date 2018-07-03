@@ -66,10 +66,10 @@
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="subscribe" remove="true" />
 
-         <block class="OpenCert\Hello\Block\HelloWorld"  
+<!--          <block class="OpenCert\Hello\Block\HelloWorld"  
             template="OpenCert_Hello::footer_cms.phtml" name="footer_cms_name">    
         </block>
-
+ -->
 
         <move element="footer_cms_name" destination="footer"  before="-"/>
 
