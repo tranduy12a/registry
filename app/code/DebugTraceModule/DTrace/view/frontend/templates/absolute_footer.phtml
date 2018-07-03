@@ -9,6 +9,7 @@
     <p>
         [DebugTraceModule_DTrace]: <?php echo $block->getNameInLayout() ?>
         <?php echo "hhhhhhhhhhhhh"; ?>
+        <?php echo $block->getching(); ?>
     </p>
     <p>
         <?php if (!$customer->isEmpty()) echo 'Customer is logged in'; ?>
@@ -50,5 +51,11 @@ echo $product->getPrice() . '<br>';
 echo $product->getSpecialPrice() . '<br>';
 echo $product->getTypeId() . '<br>';
 echo $product->getProductUrl() . '<br>';
+
+echo "string";
+
+$product_topic = $this->getPriceBySku('MT12');
+var_dump($product_topic);die();
+
     ?>
 </div>

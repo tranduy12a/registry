@@ -18,4 +18,7 @@ class InjectVariablesIntoBlocks
         $subject->setTemplate('DebugTraceModule_DTrace::absolute_footer.phtml');
         $subject->assign('customer', $this->customerSession->getCustomer());
     }
+    public function getching(){
+        return "123";
+    }
 }
