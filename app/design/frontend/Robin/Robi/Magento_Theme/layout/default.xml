@@ -1,6 +1,33 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <update handle="default_head_blocks"/>
+        <!--logo-->
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/duy.png</argument>
+                <argument name="logo_img_width" xsi:type="number">200</argument>
+                <argument name="logo_img_height" xsi:type="number">200</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!--<referenceContainer name="div.sidebar.additional">-->
+            <!--<block class="OpenCert\Hello\Block\HelloWorld" name="header.links" template="OpenCert_Hello::helloworld.phtml" after="-">-->
+            <!--</block>-->
+        <!--</referenceContainer>-->
+
+        <!--Home page-->
+
+        <referenceBlock name="my-account-link" remove="true"/>
+        <referenceBlock name="register-link" remove="true" />
+        <referenceBlock name="wish-list-link" remove="true" />
+
+        <!--del messeage-->
+        <!--<referenceBlock name="header">-->
+            <!--<arguments>-->
+                <!--<argument name="show_part" xsi:type="string">other</argument>-->
+            <!--</arguments>-->
+        <!--</referenceBlock>-->
+
+        <!--custom link-->
         <referenceContainer name="header.panel">
             <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
                 <arguments>
@@ -8,20 +35,13 @@
                 </arguments>
             </block>
         </referenceContainer>
-        <!--delete link-->
-        <referenceBlock name="register-link" remove="true" />  
-        <referenceBlock name="authorization-link" remove="true" />
-        <referenceBlock name="wish-list-link" remove="true" />
-        <referenceBlock name="advanced-search-link" remove="true"></referenceBlock>
-        <referenceBlock name="advanced-search-link" remove="true"></referenceBlock>
-        <referenceBlock name="category.image" remove="true" />
 
-        <!--custom link-->
         <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
             <block class="Magento\Framework\View\Element\Html\Link" name="custom-aboutus">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">About us</argument>
-                    <argument name="path" xsi:type="string" translate="true"></argument>
+                    <argument name="path" xsi:type="string" translate="true">about-us</argument>
                 </arguments>
             </block>
             <block class="Magento\Framework\View\Element\Html\Link" name="custom-blog">
@@ -30,52 +50,37 @@
                     <argument name="path" xsi:type="string" translate="true"></argument>
                 </arguments>
             </block>
-            <block class="Magento\Framework\View\Element\Html\Link" name="custom-google">
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-account">
                 <arguments>
-                    <argument name="label" xsi:type="string" translate="true">google</argument>
-                    <argument name="path" xsi:type="string" translate="true">http://google.com</argument>
+                    <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+                    <argument name="path" xsi:type="string" translate="true">customer/account/create/</argument>
                 </arguments>
             </block>
         </referenceBlock>
-        <!--// xoa lable max dinh-->
-        <referenceBlock name="header" remove="true"/>
-        <!--custom iamage -->
-        <referenceBlock name="logo" >
+        <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link" template="account/link/authorization.phtml"/>
+
+        <block class="Magento\Theme\Block\Html\Header" name="header" as="header">
             <arguments>
-                <argument name="logo_file" xsi:type="string">images/duy.png</argument>
-                <argument name="logo_img_width" xsi:type="number">200</argument>
-                <argument name="logo_img_height" xsi:type="number">200</argument>
+                <argument name="show_part" xsi:type="string">welcome</argument>
             </arguments>
-        </referenceBlock>
-
-        <block class="OpenCert\Hello\Block\HelloWorld"  
-            template="OpenCert_Hello::helloworld.phtml" name="helloworld">    
         </block>
+        <move element="header" destination="header.links" before="-"/>
+        <move element="custom-aboutus" destination="top.links"/>
+        <move element="custom-blog" destination="top.links"/>
+        <move element="authorization-link" destination="header.links"/>
+        <!--<move element="custom-account" destination="top.links"/>-->
+        <move element="top.links" destination="customer"/>
+        <!-- Xoa block footer -->
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
 
-
-        <!-- <move element="helloworld" destination="div.sidebar.additional"  before="-"/> -->
-       
-
-        <referenceContainer name="phone" htmlClass="header.bottom" htmlTag="div"> </referenceContainer>
-       <!--  <move element="name.of.an.element" destination="name.of.destination.element" as="new_alias" after="name.of.element.after" before="name.of.element.before"/> -->
-        <move element="page.main.title" destination="content.top" />
-        <move element="category.description" destination="content.top" />
-
-        <referenceBlock name="register-link" remove="true" />  
-        <referenceBlock name="authorization-link" remove="true" />
-        <referenceBlock name="footer_links" remove="true" />
-        <referenceBlock name="subscribe" remove="true" />
-
-<!--          <block class="OpenCert\Hello\Block\HelloWorld"  
-            template="OpenCert_Hello::footer_cms.phtml" name="footer_cms_name">    
-        </block>
- -->
-
-        <move element="footer_cms_name" destination="footer"  before="-"/>
-
-
-
-
-
+        <referenceContainer name="header-wrapper">
+            <block class="OpenCert\Hello\Block\HelloWorld" name="header-contact" template="header-contact.phtml" />
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <block class="OpenCert\Hello\Block\HelloWorld" name="footer-links" template="footer-links.phtml" />
+        </referenceContainer>
     </body>
 </page>

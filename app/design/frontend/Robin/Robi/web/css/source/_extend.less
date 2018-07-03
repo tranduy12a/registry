@@ -43,3 +43,84 @@
 	float: left;
 	margin-top: 50px;
 }
+
+div.section-items.nav-sections-items {
+	background: black;
+}
+nav.navigation ul li a {
+	color: 	#FFFFFF !important;
+}
+.page-footer{
+	background: #000000;
+}
+ul.links a{
+	color: #FFFFFF !important;
+}
+.header-contact{
+	display: inline-block;
+	padding-right: 0px;
+	width: 600px;
+}
+.header-contact p{
+	text-align: right;
+	line-height: 1.5px;
+}
+.talktous{
+	font-weight: bold;
+	font-size: 18px;
+}
+.phone{
+	color: #708090;
+	font-size: 40px;
+}
+.day{
+	font-weight: bold;
+
+	font-size: 15px;
+}
+.col-sm-3{
+	float: left;
+}
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+	.header.panel .header.links {
+		.customer-welcome + .authorization-link {
+			display: none;
+		}
+	}
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+	.customer-name,
+	.customer-welcome + .authorization-link {
+		display: none;
+	}
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	.customer-welcome {
+		.lib-dropdown(
+			@_toggle-selector: ~'.action.switch',
+			@_options-selector: ~'.customer-menu .header.links',
+			@_dropdown-actions-padding: 0,
+			@_icon-font-text-hide: true,
+			@_icon-font-size: 22px,
+			@_icon-font-line-height: 22px,
+			@_dropdown-list-min-width: 160px,
+			@_dropdown-list-item-hover: transparent,
+			@_dropdown-list-pointer-position: right,
+			@_dropdown-list-position-right: 0
+		);
+	}
+}
