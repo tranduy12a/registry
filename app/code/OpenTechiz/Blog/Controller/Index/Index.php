@@ -6,22 +6,19 @@ use Magento\Framework\App\Action\Context;
  
 class Index extends \Magento\Framework\App\Action\Action
 {
-    protected $_resultPageFactory;
-    protected $_registry;
+    protected $resultPageFactory;
    
  
-    public function __construct(Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory, \Magento\Framework\Registry $registry)
+    public function __construct(\Magento\Framework\App\Action\Context $context,
+                                \Magento\Framework\View\Result\PageFactory $resultPageFactory)
     {
-        $this->_resultPageFactory = $resultPageFactory;
-        $this->_registry = $registry;
+        $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
  
 
     public function execute()
     {
-        $this->_registry->register('custom_var', 'HELLO WORLD');
-        $resultPage = $this->_resultPageFactory->create();
-        return $resultPage;
+        return $this->resultPageFactory->create();
     }
 }
