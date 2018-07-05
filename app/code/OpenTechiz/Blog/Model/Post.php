@@ -1,4 +1,5 @@
-<?php namespace OpenTechiz\Blog\Model;
+<?php 
+namespace OpenTechiz\Blog\Model;
 use OpenTechiz\Blog\API\Data\PostInterface;
 use Magento\Framework\DataObject\IdentityInterface;
 class Post  extends \Magento\Framework\Model\AbstractModel implements PostInterface, IdentityInterface

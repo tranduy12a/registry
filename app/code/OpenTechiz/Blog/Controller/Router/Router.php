@@ -26,7 +26,7 @@ Class Router implements \Magento\FrameWork\App\RouterInterface
 			return null;
 		}
 
-		$request->setModuleName('blog')->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
+		$request->setModuleName('opentech')->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
 		$request->setAlias(\Magento\FrameWork\Url::REWRITE_REQUEST_PATH_ALIAS, $url_key);
 		return $this->actionFactory->create('\Magento\FrameWork\App\Action\Forward');
 	}
