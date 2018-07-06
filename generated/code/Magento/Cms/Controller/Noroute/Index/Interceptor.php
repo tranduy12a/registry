@@ -1,17 +1,17 @@
 <?php
-namespace Magento\Backend\Controller\Adminhtml\Auth\Login;
+namespace Magento\Cms\Controller\Noroute\Index;
 
 /**
- * Interceptor class for @see \Magento\Backend\Controller\Adminhtml\Auth\Login
+ * Interceptor class for @see \Magento\Cms\Controller\Noroute\Index
  */
-class Interceptor extends \Magento\Backend\Controller\Adminhtml\Auth\Login implements \Magento\Framework\Interception\InterceptorInterface
+class Interceptor extends \Magento\Cms\Controller\Noroute\Index implements \Magento\Framework\Interception\InterceptorInterface
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Backend\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory)
+    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory)
     {
         $this->___init();
-        parent::__construct($context, $resultPageFactory);
+        parent::__construct($context, $resultForwardFactory);
     }
 
     /**
@@ -37,32 +37,6 @@ class Interceptor extends \Magento\Backend\Controller\Adminhtml\Auth\Login imple
             return parent::dispatch($request);
         } else {
             return $this->___callPlugins('dispatch', func_get_args(), $pluginInfo);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function _processUrlKeys()
-    {
-        $pluginInfo = $this->pluginList->getNext($this->subjectType, '_processUrlKeys');
-        if (!$pluginInfo) {
-            return parent::_processUrlKeys();
-        } else {
-            return $this->___callPlugins('_processUrlKeys', func_get_args(), $pluginInfo);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getUrl($route = '', $params = array())
-    {
-        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getUrl');
-        if (!$pluginInfo) {
-            return parent::getUrl($route, $params);
-        } else {
-            return $this->___callPlugins('getUrl', func_get_args(), $pluginInfo);
         }
     }
 

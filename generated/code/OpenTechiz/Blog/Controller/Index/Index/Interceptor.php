@@ -8,10 +8,10 @@ class Interceptor extends \OpenTechiz\Blog\Controller\Index\Index implements \Ma
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory, \Magento\Framework\Registry $registry)
+    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory)
     {
         $this->___init();
-        parent::__construct($context, $resultPageFactory, $registry);
+        parent::__construct($context, $resultPageFactory);
     }
 
     /**

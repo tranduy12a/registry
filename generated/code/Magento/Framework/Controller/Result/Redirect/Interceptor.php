@@ -1,30 +1,17 @@
 <?php
-namespace Magento\Backend\Model\View\Result\Redirect;
+namespace Magento\Framework\Controller\Result\Redirect;
 
 /**
- * Interceptor class for @see \Magento\Backend\Model\View\Result\Redirect
+ * Interceptor class for @see \Magento\Framework\Controller\Result\Redirect
  */
-class Interceptor extends \Magento\Backend\Model\View\Result\Redirect implements \Magento\Framework\Interception\InterceptorInterface
+class Interceptor extends \Magento\Framework\Controller\Result\Redirect implements \Magento\Framework\Interception\InterceptorInterface
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Framework\App\Response\RedirectInterface $redirect, \Magento\Backend\Model\UrlInterface $urlBuilder, \Magento\Backend\Model\Session $session, \Magento\Framework\App\ActionFlag $actionFlag)
+    public function __construct(\Magento\Framework\App\Response\RedirectInterface $redirect, \Magento\Framework\UrlInterface $urlBuilder)
     {
         $this->___init();
-        parent::__construct($redirect, $urlBuilder, $session, $actionFlag);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRefererOrBaseUrl()
-    {
-        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'setRefererOrBaseUrl');
-        if (!$pluginInfo) {
-            return parent::setRefererOrBaseUrl();
-        } else {
-            return $this->___callPlugins('setRefererOrBaseUrl', func_get_args(), $pluginInfo);
-        }
+        parent::__construct($redirect, $urlBuilder);
     }
 
     /**
@@ -37,6 +24,19 @@ class Interceptor extends \Magento\Backend\Model\View\Result\Redirect implements
             return parent::setRefererUrl();
         } else {
             return $this->___callPlugins('setRefererUrl', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRefererOrBaseUrl()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'setRefererOrBaseUrl');
+        if (!$pluginInfo) {
+            return parent::setRefererOrBaseUrl();
+        } else {
+            return $this->___callPlugins('setRefererOrBaseUrl', func_get_args(), $pluginInfo);
         }
     }
 

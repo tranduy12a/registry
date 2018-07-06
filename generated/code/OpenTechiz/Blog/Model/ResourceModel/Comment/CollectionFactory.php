@@ -1,8 +1,8 @@
 <?php
-namespace Magento\Security\Model\ResourceModel\AdminSessionInfo;
+namespace OpenTechiz\Blog\Model\ResourceModel\Comment;
 
 /**
- * Factory class for @see \Magento\Security\Model\ResourceModel\AdminSessionInfo\Collection
+ * Factory class for @see \OpenTechiz\Blog\Model\ResourceModel\Comment\Collection
  */
 class CollectionFactory
 {
@@ -26,7 +26,7 @@ class CollectionFactory
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager, $instanceName = '\\Magento\\Security\\Model\\ResourceModel\\AdminSessionInfo\\Collection')
+    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager, $instanceName = '\\OpenTechiz\\Blog\\Model\\ResourceModel\\Comment\\Collection')
     {
         $this->_objectManager = $objectManager;
         $this->_instanceName = $instanceName;
@@ -36,7 +36,7 @@ class CollectionFactory
      * Create class instance with specified parameters
      *
      * @param array $data
-     * @return \Magento\Security\Model\ResourceModel\AdminSessionInfo\Collection
+     * @return \OpenTechiz\Blog\Model\ResourceModel\Comment\Collection
      */
     public function create(array $data = array())
     {
