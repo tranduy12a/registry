@@ -7,42 +7,63 @@ class Save extends Action
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
-    protected $_resultPageFactory;
+    protected $_resultJsonFactory;
+    protected $_inlineTranslation;
+//    protected $_resultPageFactory;
     function __construct(
         \Magento\Framework\App\Action\Context $context,
+        JsonFactory $resultJsonFactory,
+        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \OpenTechiz\Blog\Model\Post $post
     )
     {
-        $this->_resultFactory = $context->getResultFactory();
-        $this->_post = $post;
-        parent::__construct($context);
+        $this->_inlineTranslation = $inlineTranslation;
+        $this->resultJsonFactory = $resultJsonFactory;
+        return parent::__construct($context);
     }
     public function execute()
     {
-        $resultRedirect = $this->_resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $postData = (array) $this->getRequest()->getPost();
-        if (!empty($postData)) {
+        $errors = false;
+        $message = "";
+        $postData = $this->getRequest()->getPostValue();
+        if(!$postData)
+        {
+            $errors = true;
+        }
+        $this->_inlineTranslation->suspend();
+        $postObject = new \Magento\Framework\DataObject();
+        $postObject->setData($postData);
+        if (!\Zend_Validate::is(trim($postData['content']), 'NotEmpty')) {
+            $errors = true;
+        }
+        if (!\Zend_Validate::is(trim($postData['email']), 'EmailAddress')) {
+            $errors = true;
+        }
+        $result = $this->resultJsonFactory->create();
+        if($errors)
+        {
+            $message = "Wrong input field";
+            $result->setData(['result' => 'fail', 'message' => $message]);
+        }
+        else
+        {
+            $message = "submit success";
             // Retrieve your form data
-            $user_id   = $postData['author'];
+            $email = $postData['email'];
+            $author   = $postData['user_id'];
             $content    = $postData['content'];
             $post_id = $postData['post_id'];
-            $this->_post->load($post_id);
-            $urlPost = $this->_post->getUrl();
             $comment = $this->_objectManager->create('OpenTechiz\Blog\Model\Comment');
-            $comment->setUserId($user_id);
+            $comment->setEmail($email);
+            $comment->setUserId($author);
             $comment->setContent($content);
-            $comment->setPostID($post_id);
+            $comment->setPostId($post_id);
+            $comment->setStatus(0);
+            $comment->setPending(0);
+            $comment->setDeny(0);
             $comment->save();
-            // Display the succes form validation message
-            $this->messageManager->addSuccessMessage('Comment added succesfully!');
-            if($urlPost)
-            {
-                $resultRedirect->setUrl($urlPost);
-            } else $resultRedirect->setUrl('/final/opentech/');
-            return $resultRedirect;
+            $result->setData(['result' => 'success', 'message' => $message]);
         }
-        
-        $resultRedirect->setUrl('/final/opentech/');
-        return $resultRedirect;
+        return $result;
     }
 }

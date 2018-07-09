@@ -12,25 +12,35 @@ class UpgradeSchema implements  UpgradeSchemaInterface
                             ModuleContextInterface $context){
         $installer = $setup;
         $installer->startSetup();
-
-        $table = $installer->getConnection()
-            ->newTable($installer->getTable('opentechiz_blog_comment'))
-            ->addColumn(
-                'comment_id',
-                Table::TYPE_SMALLINT,
-                null,
-                ['identity' => true, 'nullable' => false, 'primary' => true],
-                'Comment ID'
-            )
-            ->addColumn('content', Table::TYPE_TEXT, '2M', [], 'Comment Content')
-            ->addColumn('user_id', Table::TYPE_INTEGER, null , [], 'User ID')
-            ->addColumn('post_id', Table::TYPE_INTEGER, null , [], 'Post ID')
-            ->addColumn('status', Table::TYPE_SMALLINT, null, ['nullable' => false, 'default' => '1'], 'Does Comment Show?')
-            ->addColumn('creation_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Creation Time')
-            ->addColumn('update_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Update Time')
-            ->setComment('OpenTechiz Blog Comment');
-        $installer->getConnection()->createTable($table);
-
+        if (version_compare($context->getVersion(), '1.1.3') < 0) {
+            // Get module table
+            $tableName = $setup->getTable('opentechiz_blog_comment');
+            // Check if the table already exists
+            if ($setup->getConnection()->isTableExists($tableName) == true) {
+                // Declare data
+                $columns = [
+                    'email' => [
+                        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                        'nullable' => false,
+                        'comment' => 'Email',
+                    ],
+                    'pending' => [
+                        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                        'nullable' => false,
+                        'comment' => 'Pending',
+                    ],
+                    'deny' => [
+                        'type' => \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                        'nullable' => false,
+                        'comment' => 'Deny',
+                    ],
+                ];
+                $connection = $setup->getConnection();
+                foreach ($columns as $name => $definition) {
+                    $connection->addColumn($tableName, $name, $definition);
+                }
+            }
+        }
         $installer->endSetup();
     }
 }
