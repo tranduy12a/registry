@@ -1,0 +1,81 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <update handle="default_head_blocks"/>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <!--delete link-->
+        <referenceBlock name="register-link" remove="true" />  
+        <referenceBlock name="authorization-link" remove="true" />
+        <referenceBlock name="wish-list-link" remove="true" />
+        <referenceBlock name="advanced-search-link" remove="true"></referenceBlock>
+        <referenceBlock name="advanced-search-link" remove="true"></referenceBlock>
+        <referenceBlock name="category.image" remove="true" />
+
+        <!--custom link-->
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-aboutus">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">About us</argument>
+                    <argument name="path" xsi:type="string" translate="true"></argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-blog">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Blog</argument>
+                    <argument name="path" xsi:type="string" translate="true"></argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-google">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">google</argument>
+                    <argument name="path" xsi:type="string" translate="true">http://google.com</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <!--// xoa lable max dinh-->
+        <referenceBlock name="header" remove="true"/>
+        <!--custom iamage -->
+        <referenceBlock name="logo" >
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/duy.png</argument>
+                <argument name="logo_img_width" xsi:type="number">200</argument>
+                <argument name="logo_img_height" xsi:type="number">200</argument>
+            </arguments>
+        </referenceBlock>
+
+        <block class="OpenCert\Hello\Block\HelloWorld"  
+            template="OpenCert_Hello::helloworld.phtml" name="helloworld">    
+        </block>
+
+
+        <!-- <move element="helloworld" destination="div.sidebar.additional"  before="-"/> -->
+       
+
+        <referenceContainer name="phone" htmlClass="header.bottom" htmlTag="div"> </referenceContainer>
+       <!--  <move element="name.of.an.element" destination="name.of.destination.element" as="new_alias" after="name.of.element.after" before="name.of.element.before"/> -->
+        <move element="page.main.title" destination="content.top" />
+        <move element="category.description" destination="content.top" />
+
+        <referenceBlock name="register-link" remove="true" />  
+        <referenceBlock name="authorization-link" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="subscribe" remove="true" />
+
+<!--          <block class="OpenCert\Hello\Block\HelloWorld"  
+            template="OpenCert_Hello::footer_cms.phtml" name="footer_cms_name">    
+        </block>
+ -->
+
+        <move element="footer_cms_name" destination="footer"  before="-"/>
+
+
+
+
+
+    </body>
+</page>

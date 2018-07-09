@@ -1,0 +1,86 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--logo-->
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/duy.png</argument>
+                <argument name="logo_img_width" xsi:type="number">200</argument>
+                <argument name="logo_img_height" xsi:type="number">200</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!--<referenceContainer name="div.sidebar.additional">-->
+            <!--<block class="OpenCert\Hello\Block\HelloWorld" name="header.links" template="OpenCert_Hello::helloworld.phtml" after="-">-->
+            <!--</block>-->
+        <!--</referenceContainer>-->
+
+        <!--Home page-->
+
+        <referenceBlock name="my-account-link" remove="true"/>
+        <referenceBlock name="register-link" remove="true" />
+        <referenceBlock name="wish-list-link" remove="true" />
+
+        <!--del messeage-->
+        <!--<referenceBlock name="header">-->
+            <!--<arguments>-->
+                <!--<argument name="show_part" xsi:type="string">other</argument>-->
+            <!--</arguments>-->
+        <!--</referenceBlock>-->
+
+        <!--custom link-->
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-aboutus">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">About us</argument>
+                    <argument name="path" xsi:type="string" translate="true">about-us</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-blog">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Blog</argument>
+                    <argument name="path" xsi:type="string" translate="true"></argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link" name="custom-account">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+                    <argument name="path" xsi:type="string" translate="true">customer/account/create/</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link" template="account/link/authorization.phtml"/>
+
+        <block class="Magento\Theme\Block\Html\Header" name="header" as="header">
+            <arguments>
+                <argument name="show_part" xsi:type="string">welcome</argument>
+            </arguments>
+        </block>
+        <move element="header" destination="header.links" before="-"/>
+        <move element="custom-aboutus" destination="top.links"/>
+        <move element="custom-blog" destination="top.links"/>
+        <move element="authorization-link" destination="header.links"/>
+        <!--<move element="custom-account" destination="top.links"/>-->
+        <move element="top.links" destination="customer"/>
+        <!-- Xoa block footer -->
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+
+        <referenceContainer name="header-wrapper">
+            <block class="OpenCert\Hello\Block\HelloWorld" name="header-contact" template="header-contact.phtml" />
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <block class="OpenCert\Hello\Block\HelloWorld" name="footer-links" template="footer-links.phtml" />
+        </referenceContainer>
+    </body>
+</page>

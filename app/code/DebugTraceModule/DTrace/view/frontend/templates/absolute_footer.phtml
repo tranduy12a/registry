@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+?>
+<div class="absolute-footer" style="text-align:center;">
+    <p>
+        [DebugTraceModule_DTrace]: <?php echo $block->getNameInLayout() ?>
+        <?php echo "hhhhhhhhhhhhh"; ?>
+        <?php echo $block->getching(); ?>
+    </p>
+    <p>
+        <?php if (!$customer->isEmpty()) echo 'Customer is logged in'; ?>
+    </p>
+    <?php /* @escapeNotVerified */
+    echo $block->getMiscellaneousHtml(); ?>
+    <?php 
+   var_dump($customer->getData());
+    echo "fffffffffffffff";
+    	echo "<pre>";
+//     	print_r($customer->getData());
+
+// $product = $block->getProductById(15);
+ 
+// // get product by sku
+// $product = $block->getProductBySku('MT12');
+ 
+// echo $product->getEntityId() . '<br>';
+// echo $product->getName() . '<br>';
+// echo $product->getSKU() . '<br>';
+// echo $product->getPrice() . '<br>';
+// echo $product->getSpecialPrice() . '<br>';
+// echo $product->getTypeId() . '<br>';
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+ 
+$productRepository = $objectManager->get('\Magento\Catalog\Model\ProductRepository');
+ 
+// get product by product id 
+$product = $productRepository->getById(15);
+ 
+// get product by product sku 
+$product = $productRepository->get('MT12');
+ 
+echo $product->getEntityId() . '<br>';
+echo $product->getName() . '<br>';
+echo $product->getSKU() . '<br>';
+echo $product->getPrice() . '<br>';
+echo $product->getSpecialPrice() . '<br>';
+echo $product->getTypeId() . '<br>';
+echo $product->getProductUrl() . '<br>';
+echo "string";
+
+// var_dump($product);
+// $newpro = $objectManager->get('\Magento\Catalog\Model\ProductFactory');
+// $newpro1 = $newpro->get('MT12');
+// var_dump($newpro.'wefrw');
+
+echo "string";
+// $pro1 = $productRepository->getPrice();
+// var_dump($pro1);
+// echo "".$pro = $this->getPricee("MT12");
+// var_dump('lfjkhs'.$pro);
+// var_dump($product_Factoryy);die();
+
+    ?>
+</div>

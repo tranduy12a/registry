@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_login">
+        <observer name="customer_login_observer" instance="DebugTraceModule\DTrace\Observer\CustomPrice" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="debugtracemodule_dtrace_custom_price" instance="DebugTraceModule\DTrace\Observer\CustomPrice" />
+    </event>
+<!--     <event name="customer_login">
+        <observer name="customer_login_observer_discount" instance="DebugTraceModule\DTrace\Observer\CustomPrice" />
+    </event> -->
+</config>
