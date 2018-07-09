@@ -1,20 +1,14 @@
 <?php
 namespace OpenTechiz\Blog\Controller\Comment;
-use \Magento\Framework\App\Action\Action;
-use Magento\Framework\Controller\ResultFactory;
-class Save extends Action
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\JsonFactory;
+class Save extends \Magento\Framework\App\Action\Action
 {
-    /**
-     * @var \Magento\Framework\View\Result\PageFactory
-     */
-    protected $_resultJsonFactory;
+    protected $resultJsonFactory;
     protected $_inlineTranslation;
-//    protected $_resultPageFactory;
-    function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        JsonFactory $resultJsonFactory,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
-        \OpenTechiz\Blog\Model\Post $post
+    public function __construct(Context $context,
+                                JsonFactory $resultJsonFactory,
+                                \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
     )
     {
         $this->_inlineTranslation = $inlineTranslation;
@@ -50,7 +44,7 @@ class Save extends Action
             $message = "submit success";
             // Retrieve your form data
             $email = $postData['email'];
-            $author   = $postData['user_id'];
+            $author   = $postData['author'];
             $content    = $postData['content'];
             $post_id = $postData['post_id'];
             $comment = $this->_objectManager->create('OpenTechiz\Blog\Model\Comment');

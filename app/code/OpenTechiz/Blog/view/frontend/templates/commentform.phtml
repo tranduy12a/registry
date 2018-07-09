@@ -1,48 +1,51 @@
-<form class="form" action="<?php echo $block->getFormAction() ?>" method="post">
-    <?php $form_url = $block->getFormAction(); ?>
-    <script type="text/x-magento-init">
-    {
-        "*": {
-            "OpenTeachiz_Blog/js/commentajax": {
-                "AjaxCommentPostUrl": "<?php echo $form_url; ?>
-                }
-             }
-    }
-</script>
+<form class="form" id="comment-form" method="post">
 
-    <div class="note"></div>
     <fieldset class="fieldset">
-        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Add new comment') ?></span></legend><br>
+        <legend class="legend"><span><?php  echo __('Add new comment') ?></span></legend><br>
+        <div class="note"></div>
         <div class="field required">
-            <label for="author" class="label">
-                <span><?php /* @escapeNotVerified */ echo __('Name') ?></span>
+            <label for="user_id" class="label">
+                <span><?php echo __('ID') ?></span>
             </label>
-
             <div class="control">
-                <input type="text" id="author"
-                       name="author"
-                       class="input-text" width="50%">
+                <input type="text" id="user_id" name="author" class="input-text" width="50%">
             </div>
         </div>
         <div class="field required">
-            <label for="content" class="label">
-                <span><?php /* @escapeNotVerified */ echo __('Content') ?></span>
+            <label for="comment" class="label">
+                <span><?php echo __('Content') ?></span>
             </label>
-
             <div class="control">
-                <textarea id="content"
-                       name="content"
-                       class="input-text"></textarea>
+                <textarea id="comment" name="content" class="input-text"></textarea>
+            </div>
+        </div>
+        <div class="field required">
+            <label for="email" class="label">
+                <span><?php echo __('Email') ?></span>
+            </label>
+            <div class="control">
+                <input type="email" name="email" class="input-text" id="email">
             </div>
         </div>
     </fieldset>
     <input type="hidden" name="post_id" value="<?php echo $block->getPostID() ?>"/>
     <div class="actions-toolbar">
         <div class="primary">
-            <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>">
-                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
-            </button>
+            <input type="submit" id ="submit" class="action submit primary" value="<?php  echo __('Submit') ?>">
         </div>
+        <input type="hidden" name="post_id" value="<?php echo $block->getPostId() ?>"/>
+        <input type="hidden" name="user_id" value="<?php echo $block->getUserId() ?>"/>
     </div>
-
 </form>
+<?php
+$ajaxurl = $block->getFormAction();
+?>
+<script type="text/x-magento-init">
+       {
+            "*": {
+               "OpenTechiz_Blog/js/commentajax": {
+                    "AjaxCommentPostUrl": "<?php echo $ajaxurl; ?>"
+               }
+            }
+        }
+</script>

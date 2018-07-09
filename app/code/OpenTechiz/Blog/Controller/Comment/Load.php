@@ -10,6 +10,7 @@ class Load extends Action
      */
     protected $_resultJsonFactory;
     protected $_commentCollectionFactory;
+
     function __construct(
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
         \OpenTechiz\Blog\Model\ResourceModel\Comment\CollectionFactory $commentCollectionFactory,
@@ -21,9 +22,10 @@ class Load extends Action
         $this->_commentCollectionFactory = $commentCollectionFactory;
         parent::__construct($context);
     }
+
     public function execute()
     {
-        $postData = (array) $this->getRequest()->getPostValue();
+        $postData = (array)$this->getRequest()->getPostValue();
         $post_id = $postData['post_id'];
         $jsonResultResponse = $this->_resultJsonFactory->create();
         $comments = $this->_commentCollectionFactory
@@ -37,3 +39,4 @@ class Load extends Action
         $jsonResultResponse->setData($comments);
         return $jsonResultResponse;
     }
+}
