@@ -76,11 +76,5 @@
         <referenceBlock name="form.subscribe" remove="true"/>
         <referenceBlock name="copyright" remove="true"/>
 
-        <referenceContainer name="header-wrapper">
-            <block class="OpenCert\Hello\Block\HelloWorld" name="header-contact" template="header-contact.phtml" />
-        </referenceContainer>
-        <referenceContainer name="footer-container">
-            <block class="OpenCert\Hello\Block\HelloWorld" name="footer-links" template="footer-links.phtml" />
-        </referenceContainer>
     </body>
 </page>

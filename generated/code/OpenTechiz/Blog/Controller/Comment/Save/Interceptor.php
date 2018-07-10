@@ -8,10 +8,10 @@ class Interceptor extends \OpenTechiz\Blog\Controller\Comment\Save implements \M
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory, \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation)
+    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory, \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation, \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder, \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
     {
         $this->___init();
-        parent::__construct($context, $resultJsonFactory, $inlineTranslation);
+        parent::__construct($context, $resultJsonFactory, $inlineTranslation, $transportBuilder, $scopeConfig);
     }
 
     /**
