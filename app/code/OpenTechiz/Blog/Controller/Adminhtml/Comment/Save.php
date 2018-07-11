@@ -53,7 +53,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (\RuntimeException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the comment.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the post.'));
             }
             $this->_getSession()->setFormData($data);
             return $resultRedirect->setPath('*/*/edit', ['comment_id' => $this->getRequest()->getParam('comment_id')]);
