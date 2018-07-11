@@ -9,7 +9,7 @@ class Delete extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Ashsmith_Blog::delete');
+        return $this->_authorization->isAllowed('OpenTechiz_Blog::delete');
     }
     /**
      * Delete action
@@ -23,7 +23,7 @@ class Delete extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
             try {
-                $model = $this->_objectManager->create('Ashsmith\Blog\Model\Post');
+                $model = $this->_objectManager->create('OpenTechiz\Blog\Model\Post');
                 $model->load($id);
                 $model->delete();
                 $this->messageManager->addSuccess(__('The post has been deleted.'));
