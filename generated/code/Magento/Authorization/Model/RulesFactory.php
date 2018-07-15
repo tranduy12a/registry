@@ -1,10 +1,10 @@
 <?php
-namespace Magento\Framework\Indexer;
+namespace Magento\Authorization\Model;
 
 /**
- * Factory class for @see \Magento\Framework\Indexer\IndexerInterface
+ * Factory class for @see \Magento\Authorization\Model\Rules
  */
-class IndexerInterfaceFactory
+class RulesFactory
 {
     /**
      * Object Manager instance
@@ -26,7 +26,7 @@ class IndexerInterfaceFactory
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager, $instanceName = '\\Magento\\Framework\\Indexer\\IndexerInterface')
+    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager, $instanceName = '\\Magento\\Authorization\\Model\\Rules')
     {
         $this->_objectManager = $objectManager;
         $this->_instanceName = $instanceName;
@@ -36,7 +36,7 @@ class IndexerInterfaceFactory
      * Create class instance with specified parameters
      *
      * @param array $data
-     * @return \Magento\Framework\Indexer\IndexerInterface
+     * @return \Magento\Authorization\Model\Rules
      */
     public function create(array $data = array())
     {
