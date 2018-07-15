@@ -48,13 +48,6 @@
             </arguments>
         </referenceBlock>
 
-        <block class="OpenCert\Hello\Block\HelloWorld"  
-            template="OpenCert_Hello::helloworld.phtml" name="helloworld">    
-        </block>
-
-
-        <!-- <move element="helloworld" destination="div.sidebar.additional"  before="-"/> -->
-       
 
         <referenceContainer name="phone" htmlClass="header.bottom" htmlTag="div"> </referenceContainer>
        <!--  <move element="name.of.an.element" destination="name.of.destination.element" as="new_alias" after="name.of.element.after" before="name.of.element.before"/> -->
@@ -66,10 +59,6 @@
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="subscribe" remove="true" />
 
-<!--          <block class="OpenCert\Hello\Block\HelloWorld"  
-            template="OpenCert_Hello::footer_cms.phtml" name="footer_cms_name">    
-        </block>
- -->
 
         <move element="footer_cms_name" destination="footer"  before="-"/>
 

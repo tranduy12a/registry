@@ -3,7 +3,7 @@
     <default>
         <blog>
             <general>
-                    <template> blog comment config xml</template>
+                <template>blog_comment_email_template</template>
             </general>
         </blog>
     </default>
