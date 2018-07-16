@@ -9,6 +9,8 @@ class Comment  extends \Magento\Framework\Model\AbstractModel implements Comment
      */
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
+    const STATUS_PENDING = 2;
+
     /**#@-*/
     /**
      * CMS page cache tag
@@ -57,7 +59,7 @@ class Comment  extends \Magento\Framework\Model\AbstractModel implements Comment
     
     public function getAvailableStatuses()
     {
-        return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
+        return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled'),self::STATUS_PENDING => __('Pending')];
     }
    
     public function getIdentities()

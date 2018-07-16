@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-/**
+/*
  * Copyright © 2015 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
@@ -25,7 +25,7 @@
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">PostGridDataProvider</argument>
             <argument name="name" xsi:type="string">blog_comment_listing_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">block_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">comment_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -145,10 +145,10 @@
                     </item>
                 </argument>
             </filterInput>
-            <filterSelect name="is_active">
+            <filterSelect name="status">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">is_active</item>
+                        <item name="dataScope" xsi:type="string">status</item>
                         <item name="label" xsi:type="string" translate="true">Status</item>
                         <item name="caption" xsi:type="string" translate="true">Select...</item>
                         <item name="options" xsi:type="array">
@@ -242,6 +242,15 @@
                             <item name="content" xsi:type="string" translate="true">Delete items</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
                         </item>
+                    </item>
+                </argument>
+            </action>
+            <action name="status">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">pending</item>
+                        <item name="label" xsi:type="string" translate="true">Pending</item>
+                        <item name="url" xsi:type="url" path="blog/comment/massPending"/>
                     </item>
                 </argument>
             </action>
@@ -372,7 +381,7 @@
                 </item>
             </argument>
         </column>
-        <column name="is_active">
+        <column name="status">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">OpenTechiz\Blog\Model\Comment\Source\IsActive</item>
                 <item name="config" xsi:type="array">
