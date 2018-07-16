@@ -31,7 +31,7 @@ class Load extends Action
         $comments = $this->_commentCollectionFactory
             ->create()
             ->addFilter('post_id', $post_id)
-            ->addFilter('is_active', 1)
+            ->addFilter('status', 1)
             ->addOrder(
                 CommentInterface::CREATION_TIME,
                 CommentCollection::SORT_ORDER_DESC
