@@ -14,7 +14,8 @@ class SaveComment extends \Magento\Framework\View\Element\Template
 	}
 	public function getFormAction()
 	{
-		return '/final/opentech/comment/save';
+		$url = $this->getUrl('*/*', ['_direct' => 'opentech/comment/save', '_use_rewrite' => true]);
+        return $url;
 	}
 	public function getPostID()
 	{

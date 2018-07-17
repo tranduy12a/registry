@@ -852,3 +852,10 @@ Stack trace:
 [16-Jul-2018 03:09:09 UTC] PHP Warning:  fopen(/var/www/html/final/var/cache//mage-tags/mage---e05_CONFIG_SCOPES): failed to open stream: Permission denied in /var/www/html/final/vendor/colinmollenhour/cache-backend-file/File.php on line 646
 [16-Jul-2018 03:09:09 UTC] PHP Warning:  fopen(/var/www/html/final/var/cache//mage-tags/mage---e05_CONFIG): failed to open stream: Permission denied in /var/www/html/final/vendor/colinmollenhour/cache-backend-file/File.php on line 646
 [16-Jul-2018 03:09:09 UTC] PHP Warning:  fopen(/var/www/html/final/var/cache//mage-tags/mage---e05_MAGE): failed to open stream: Permission denied in /var/www/html/final/vendor/colinmollenhour/cache-backend-file/File.php on line 646
+[17-Jul-2018 04:12:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /var/www/html/final/app/code/DebugTraceModule/DTrace/Observer/CustomPrice.php:15
+Stack trace:
+#0 /var/www/html/final/vendor/magento/framework/Event/Invoker/InvokerDefault.php(72): DebugTraceModule\DTrace\Observer\CustomPrice->execute(Object(Magento\Framework\Event\Observer))
+#1 /var/www/html/final/vendor/magento/framework/Event/Invoker/InvokerDefault.php(60): Magento\Framework\Event\Invoker\InvokerDefault->_callObserverMethod(Object(DebugTraceModule\DTrace\Observer\CustomPrice), Object(Magento\Framework\Event\Observer))
+#2 /var/www/html/final/vendor/magento/framework/Event/Manager.php(66): Magento\Framework\Event\Invoker\InvokerDefault->dispatch(Array, Object(Magento\Framework\Event\Observer))
+#3 /var/www/html/final/generated/code/Magento/Framework/Event/Manager/Proxy.php(95): Magento\Framework\Event\Manager->dispatch('customer_login', Array)
+#4 /var/www/html/final/vendor/magento/module-customer/Model/Session.php(435): Magento\Framework\Even in /var/www/html/final/app/code/DebugTraceModule/DTrace/Observer/CustomPrice.php on line 15
